@@ -6,8 +6,10 @@
   <p align="center">
     Графический интерфейс для отдела RNP по запросу от коллеги
     <br />
-     <img src="img/sign_in.png" alt="Logo" width="80" height="80">
+      Окно входа
+     <img src="img/sign_in.png" alt="Logo" width="200" height="200">
     <br />
-    
+      Главное окно
+    <img src="img/sign_in.png" alt="Logo" width="200" height="200">
   </p>
 </div>
