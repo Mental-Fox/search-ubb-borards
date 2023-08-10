@@ -1,9 +1,7 @@
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
-  <h1 align="center">Search UBB Boards</h1>
-    <br />
-  <h2 align="center">Разработан графический интерфейс для отдела RNP по запросу от коллеги с помощью chatGPT</h2>
+  <h2 align="center">Search UBB Boards</h2>
+  <h3 align="center">Разработан графический интерфейс для отдела RNP по запросу от коллеги с помощью chatGPT</h3>
     <br />
     <a href="Запрос в chatGPT.txt"><strong>request ChatGPT »</strong></a>
     ·
