@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">Search UBB Boards</h3>
-  <p align="center">Графический интерфейс для отдела RNP по запросу от коллеги </p>
+  <h2 align="center">Search UBB Boards</h3>
+  <h4 align="center">Графический интерфейс для отдела RNP по запросу от коллеги </h4>
     <br />
      <p align="center"> Окно входа</p>
      <img src="img/sign_in.png" alt="sign_in">
