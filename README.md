@@ -5,8 +5,10 @@
     <br />
   <h2 align="center">Разработан графический интерфейс для отдела RNP по запросу от коллеги с помощью chatGPT</h2>
     <br />
-  <a href="Запрос в chatGPT.txt"><strong>ChatGPT request »</strong></a>
-    <br />
+  <br />
+    <a href="Запрос в chatGPT.txt"><strong>request ChatGPT »</strong></a>
+    ·
+    <a href="search_ubb.py"><strong>File Python »</strong></a>
     <br />
      <p align="center"> Окно входа</p>
      <img src="img/sign_in.png" alt="sign_in">
