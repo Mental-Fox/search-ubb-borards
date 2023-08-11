@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<!-- PROJECT LOGO -->
+
 <div align="center">
   <h2 align="center">Search UBB Boards</h2>
   <h3 align="center">Разработан графический интерфейс для отдела RNP по запросу от коллеги с помощью запроса chatGPT</h3>
