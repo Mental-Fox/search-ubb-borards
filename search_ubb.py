@@ -147,16 +147,6 @@ class CSVReader():
                 
 
 def main():
-    # sg.theme("SystemDefaultForReal")
-    # sg.SetOptions(
-    #             background_color="#313131", 
-    #             text_element_background_color="#313131", 
-    #             text_color="#fff",  
-    #             input_text_color ="#fff",  
-    #             element_background_color="#313131", 
-    #             input_elements_background_color="#595959",
-    #             button_color=( "White", "#217346"))
-
     working_directory = os.getcwd()
     font_Regular = working_directory + "\\img\\font\\Tele2Slab-Bold.ttf"
     pyglet.font.add_file(font_Regular)
@@ -202,12 +192,30 @@ def main():
             else:
                 sg.popup_error("Неверное имя пользователя или пароль.\nПожалуйста, повторите попытку.", title="Ошибка")
     
-    information = "Вот краткий обзор функциональности скрипта:\n \
-                \nСкрипт запрашивает (выбрать файл, ввести название сайта, ввести селлы) \
-                \nПосле нажатья на кнопку Обработать данные скрипт - обработает прогонит по функциям и создаст новый файл с сайтом и теми платами платами"
-             
+    information = """
+Цель программы: Эта программа предназначена для обработки данных из CSV-файлов, связанных с информацией о местоположении плат внутри определенных мест (сайтов) и сотовых сетей (3G, 4G и возможно 5G).
     
-    headings_ubb = ["#", "00", "01", "#"]
+– Загрузка CSV-файла –
+Выберите CSV-файл, содержащий данные о местоположении плат.
+Введите название сайта, к которому относятся данные из файла.
+Введите количество селлов для каждой из сотовых сетей (3G, 4G и 5G), если это необходимо.
+
+– Обработка данных –
+После ввода данных и нажатия кнопки "Обработать данные", программа выполнит следующие действия:
+Анализ данных из файла и их обработка в соответствии с заданными правилами.
+Генерация новых данных, которые будут отображены в таблице в программе.
+Если введено количество селлов для 3G и/или 4G, то программа может перераспределить платы в соответствии с заданными ограничениями.
+
+– Отображение данных в таблице –
+Обработанные данные отображаются в таблице на главном экране программы.
+Таблица содержит информацию о местоположении плат в сотовых сетях.
+
+– Сохранение результата –
+После обработки данных программа сохранит новые данные в CSV-файл с названием сайта.
+Новый файл будет содержать информацию о местоположении плат с учетом проведенных изменений.
+    """
+
+    headings_ubb = ["#", "board1", "board2", "##"]
     headings = list(headings_ubb)
     
     file_list_column = [
@@ -226,9 +234,9 @@ def main():
     
     layout = [
         [sg.Text("\nДля отдела RNP обработчик по расположения плат", enable_events=True, key="-TEXT-", pad=(15, 0), font=font_Regular)],
-        [sg.Frame("1. Загрузка Файла CSV", file_list_column, size=(510, 250), title_color="#007fff", pad=(15, 20))],
+        [sg.Frame("1. Загрузка Файла CSV", file_list_column, size=(520, 250), title_color="#007fff", pad=(15, 20))],
         # sg.VSeperator(),
-        [sg.Frame("2. Вывод в таблицу", table_list_column, size=(510, 180), title_color="#007fff", pad=(15, 20))],
+        [sg.Frame("2. Вывод в таблицу", table_list_column, size=(520, 190), title_color="#007fff", pad=(15, 20))],
         [sg.Text("", size=(17, 1)), 
             sg.Button("Обработать данные", use_ttk_buttons=True, border_width = False, key="-UPDATE_FILE-"),  
             sg.Button("Информация", use_ttk_buttons=True, border_width = False, key="-INFO-"), 
@@ -244,7 +252,7 @@ def main():
                 break
             
             elif event == "-INFO-":
-                sg.popup_ok(information, sg.version, font="Arial 12", grab_anywhere=True)
+                sg.popup_ok(information, sg.version, line_width = 100, font=("Arial Bold", 12), grab_anywhere=True)
                 
             elif event == "-UPDATE_FILE-":
                 file_name = values["-FILE_PATH-"]
@@ -279,6 +287,7 @@ def main():
                                 if cell_5g != 0:
                                     csv_reader.deal_with_04_slot()
 
+                                # Получить значения для столбцов 00 и 01
                                 data = {
                                     0: ["00", "02", "04"],
                                     1: [csv_reader.new_site_info[0], csv_reader.new_site_info[2], csv_reader.new_site_info[4]],
@@ -290,8 +299,8 @@ def main():
                                 new_file_name = f'{csv_reader.site}.csv'
                                 df.to_csv(new_file_name, index=False, header=False)
                                 table_data = df.values.tolist()
+                                # data_without_header = table_data[1:]
                                 window["-TABLE-"].update(values=table_data, visible=True)
-                                sg.popup_ok(f'Файл - {new_file_name} успешно обработан.')
 
     window.close()
 if __name__ == "__main__":
